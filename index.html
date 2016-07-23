@@ -20,10 +20,10 @@
 
   <script id='todo-template' type='text/x-handlebars-template'>
     {{#this}}
-      <li id='{{id}}' >
+      <li id='{{id}}' {{#if completed}} class='completed' {{/if}} >
         <label>{{text}}</label>
-        <input type="checkbox" value="{{completed}}">
-        <button>X</button>
+        <input class='toggle' type="checkbox" {{#if completed}}checked{{/if}}>
+        <button class='destroy'>X</button>
       </li>
     {{/this}}
   </script>
