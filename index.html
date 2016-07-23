@@ -22,6 +22,7 @@
     {{#this}}
       <li id='{{id}}' {{#if completed}} class='completed' {{/if}} >
         <label>{{text}}</label>
+        <input type="text" class="edit">
         <input class='toggle' type="checkbox" {{#if completed}}checked{{/if}}>
         <button class='destroy'>X</button>
       </li>
