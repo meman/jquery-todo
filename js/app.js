@@ -4,6 +4,7 @@
   var app = {
     init:function(){
       this.$cachedTodoApp = $('#todo-app');
+      this.todoTemplate = Handlebars.compile($('#todo-template').html());
 
       // will need to create a proper store !!!
       this.todos = [];
@@ -36,6 +37,13 @@
 
       $input.value = '';
 
+      this.render();
+
+    },
+    render:function(){
+      this.$cachedTodoApp.find('#todo-list')
+        .html(this.todoTemplate(this.todos));
+      console.log('rendered');
     }
   };
 
