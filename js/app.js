@@ -16,7 +16,8 @@
         .on('keyup',this.addTodo.bind(this));
 
       this.$cachedTodoApp.find('#todo-list')
-        .on('change','.toggle',this.toggleTodoComplete.bind(this));
+        .on('change','.toggle',this.toggleTodoComplete.bind(this))
+        .on('click','.destroy',this.removeTodo.bind(this));
     },
     addTodo:function(evt){
       var $input = evt.target,
@@ -50,6 +51,14 @@
           todo.completed = !todo.completed;
         }
         return todo;
+      });
+      this.render();
+    },
+    removeTodo:function(evt){
+      var id = $(evt.target).parents('li').attr('id');
+
+      this.todos = this.todos.filter(function(todo){
+        return todo.id != id;
       });
       this.render();
     },
